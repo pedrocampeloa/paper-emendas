@@ -1,0 +1,9 @@
+,pol_simple,pol_jaccard,pol_paper,pol_paper_euclidean_mds,pol_paper_forte_mds,pol_paper_fraca_mds,alinhamento,emenda_M
+pol_simple,1.0,0.739,,0.161,0.105,0.123,-0.144,0.041
+pol_jaccard,0.739,1.0,,-0.075,-0.041,-0.108,-0.15,0.036
+pol_paper,,,,,,,,
+pol_paper_euclidean_mds,0.161,-0.075,,1.0,0.769,0.693,0.019,-0.015
+pol_paper_forte_mds,0.105,-0.041,,0.769,1.0,0.655,0.036,0.11
+pol_paper_fraca_mds,0.123,-0.108,,0.693,0.655,1.0,-0.01,0.041
+alinhamento,-0.144,-0.15,,0.019,0.036,-0.01,1.0,0.005
+emenda_M,0.041,0.036,,-0.015,0.11,0.041,0.005,1.0

@@ -1,0 +1,7 @@
+spec;legis;model;iv_set;pp_per_unit;se_pp;ci95_hw_pp;t_stat;RV_approx;interpretation
+reduced;all;PLIV;backlog;1.9829;0.7938;1.5558;2.5;0.215;MODERATE: confounder explaining 20-40% would flip
+reduced;55;PLIV;backlog;2.161;0.6067;1.1891;3.56;0.45;MODERATE: confounder explaining 20-40% would flip
+reduced;56;PLIV;backlog;-2.0552;0.4185;0.8203;4.91;0.601;VERY ROBUST: confounder would need to explain >50% of residual variation in Y to flip sign
+full_clean;all;PLIV;backlog;-1.7729;0.5734;1.1239;3.09;0.366;MODERATE: confounder explaining 20-40% would flip
+full_clean;55;PLIV;backlog;0.6701;0.6842;1.341;0.98;0.0;WEAK: small confounder could flip
+full_clean;56;PLIV;backlog;-1.6532;0.4044;0.7926;4.09;0.521;VERY ROBUST: confounder would need to explain >50% of residual variation in Y to flip sign

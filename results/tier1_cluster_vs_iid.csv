@@ -1,0 +1,7 @@
+spec;legis;model;iv_set;n_obs;n_clusters;pp_per_unit;se_iid_pp;se_cluster_pp;ratio_cluster_iid;stars_iid;stars_cluster
+reduced;all;PLR;none;869902;931;0.0843;0.0166;0.0584;3.52;***;
+reduced;all;PLIV;backlog;869902;931;1.9829;0.1473;0.7938;5.39;***;**
+reduced;55;PLR;none;226308;614;0.6132;0.033;0.1364;4.13;***;***
+reduced;55;PLIV;backlog;226308;614;2.161;0.1078;0.6067;5.63;***;***
+reduced;56;PLR;none;643594;597;-0.1783;0.0182;0.0573;3.15;***;***
+reduced;56;PLIV;backlog;643594;597;-2.0552;0.1355;0.4185;3.09;***;***

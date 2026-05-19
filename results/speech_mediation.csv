@@ -1,0 +1,10 @@
+mediator;label;theta_TM;beta_T_direct;gamma_M;beta_T_total;indirect_effect;prop_mediated;n_obs;legis
+speech_anti_gov_90d;pooled_speech_anti_gov_90d;0.001523;0.001318;-0.078829;0.001198;-0.00012;-0.1002;292042;pooled
+speech_pt_score_90d;pooled_speech_pt_score_90d;-0.002637;0.00108;0.06329;0.000913;-0.000167;-0.1827;334951;pooled
+speech_xlm_score_90d;pooled_speech_xlm_score_90d;-0.002631;0.001047;0.050771;0.000913;-0.000134;-0.1462;334951;pooled
+speech_anti_gov_90d;leg55_speech_anti_gov_90d;0.002054;0.003166;-0.086827;0.002988;-0.000178;-0.0597;109848;leg55
+speech_pt_score_90d;leg55_speech_pt_score_90d;-0.001625;0.002588;0.058032;0.002493;-9.4e-05;-0.0378;115034;leg55
+speech_xlm_score_90d;leg55_speech_xlm_score_90d;-0.001586;0.002563;0.043916;0.002493;-7e-05;-0.0279;115034;leg55
+speech_anti_gov_90d;leg56_speech_anti_gov_90d;0.000463;2.6e-05;-0.082609;-1.2e-05;-3.8e-05;3.2041;182194;leg56
+speech_pt_score_90d;leg56_speech_pt_score_90d;-0.001548;-0.000198;0.07193;-0.00031;-0.000111;0.3597;219917;leg56
+speech_xlm_score_90d;leg56_speech_xlm_score_90d;-0.002122;-0.000181;0.060671;-0.00031;-0.000129;0.4159;219917;leg56

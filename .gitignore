@@ -1,0 +1,79 @@
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.pyc
+*.pyo
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+*.egg-info/
+
+# ============================================================
+# LaTeX build artifacts
+# ============================================================
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.dvi
+*.nav
+*.snm
+*.vrb
+*-blx.bib
+*.run.xml
+*.bcf
+*.spl
+docs/tex/*.aux
+docs/tex/*.bbl
+docs/tex/*.blg
+docs/tex/*.log
+docs/tex/*.out
+docs/tex/*.spl
+docs/tex/*.fls
+docs/tex/*.fdb_latexmk
+docs/tex/*.toc
+
+# ============================================================
+# Data — raw/interim/processed are NOT tracked
+# ============================================================
+../../dados/raw/
+../../dados/interim/
+../../dados/processed/
+*.parquet
+*.pkl
+*.feather
+*.h5
+*.hdf5
+
+# Local result caches that can be regenerated
+results/_archive/
+
+# ============================================================
+# OS / editor
+# ============================================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*~
+.Rhistory
+.Rapp.history
+
+# ============================================================
+# Legacy — old paper and source kept locally, not pushed
+# ============================================================
+docs-old/
+source-old/

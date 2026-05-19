@@ -1,0 +1,4 @@
+beta_tsls_sd;ci_lo_sd;ci_hi_sd;pp_per_unit;ar_ci_lo_pp;ar_ci_hi_pp;n_obs;n_clusters;n_iv;T_std;spec;legis;iv_set
+0.0335;;;1.3453;;;869902;931;2;2.4905;reduced;all;backlog
+0.0657;;;2.6894;;;226308;614;2;2.443;reduced;55;backlog
+-0.0686;-0.0946;-0.0425;-2.7463;-3.7909;-1.7016;643594;597;2;2.4964;reduced;56;backlog

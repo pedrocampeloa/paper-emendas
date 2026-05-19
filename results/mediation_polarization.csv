@@ -1,0 +1,16 @@
+mediator;label;theta_TM;se_theta_TM;beta_T_direct;gamma_M;beta_T_total;indirect_effect;prop_mediated;n_obs;legis
+pol_simple;pooled_pol_simple;0.000477;0.000147;-0.000199;-0.222964;-0.000306;-0.000106;0.3482;869902;pooled
+pol_jaccard;pooled_pol_jaccard;0.001744;0.000151;3.7e-05;-0.196244;-0.000306;-0.000342;1.1196;869902;pooled
+pol_paper_euclidean_mds;pooled_pol_paper_euclidean_mds;-0.785571;0.036999;-0.000522;-0.000276;-0.000306;0.000216;-0.7079;869902;pooled
+pol_paper_forte_mds;pooled_pol_paper_forte_mds;0.012951;0.000588;-0.000544;0.018361;-0.000306;0.000238;-0.7777;869902;pooled
+pol_paper_fraca_mds;pooled_pol_paper_fraca_mds;8.8e-05;3.3e-05;-0.000265;-0.461079;-0.000306;-4e-05;0.132;869902;pooled
+pol_simple;leg55_pol_simple;-0.000927;0.000272;0.001619;-0.216455;0.001819;0.000201;0.1103;226308;leg55
+pol_jaccard;leg55_pol_jaccard;0.001675;0.000252;0.00201;-0.113769;0.001819;-0.000191;-0.1048;226308;leg55
+pol_paper_euclidean_mds;leg55_pol_paper_euclidean_mds;-0.271608;0.011577;0.000658;-0.004274;0.001819;0.001161;0.6381;226308;leg55
+pol_paper_forte_mds;leg55_pol_paper_forte_mds;0.019096;0.001167;0.001508;0.016306;0.001819;0.000311;0.1712;226308;leg55
+pol_paper_fraca_mds;leg55_pol_paper_fraca_mds;-0.000773;5.3e-05;0.001155;-0.859759;0.001819;0.000664;0.3652;226308;leg55
+pol_simple;leg56_pol_simple;-3.2e-05;0.000143;-0.000756;-0.235377;-0.000748;7e-06;-0.01;643594;leg56
+pol_jaccard;leg56_pol_jaccard;-0.0005;0.000144;-0.000863;-0.229698;-0.000748;0.000115;-0.1536;643594;leg56
+pol_paper_euclidean_mds;leg56_pol_paper_euclidean_mds;-0.79674;0.039856;-0.000999;-0.000314;-0.000748;0.000251;-0.3349;643594;leg56
+pol_paper_forte_mds;leg56_pol_paper_forte_mds;0.00214;0.000337;-0.000703;-0.021179;-0.000748;-4.5e-05;0.0606;643594;leg56
+pol_paper_fraca_mds;leg56_pol_paper_fraca_mds;-5.8e-05;3e-05;-0.00077;-0.376382;-0.000748;2.2e-05;-0.0292;643594;leg56
