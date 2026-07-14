@@ -942,9 +942,203 @@ Nenhuma virada de sinal; magnitude levemente acentuada no pooled.
 
 ## Documentos correlatos
 
-- [`MUSTDO.md`](MUSTDO.md) — pedidos originais dos professores
-- [`SPEC.md`](SPEC.md) — econometric specification
+- **[`STATE_OF_PLAY.md`](STATE_OF_PLAY.md)** ← documento mestre em português, atualizado continuamente
+- [`MUSTDO_v2.md`](MUSTDO_v2.md) — feedback pós-defesa (junho 2026)
+- [`SPEC.md`](SPEC.md) — econometric specification atualizada
 - [`README.md`](README.md) — overview e setup
-- [`data_pipeline/outputs/CHECKPOINT_*.md`](../data_pipeline/outputs/) — checkpoints da fase de pipeline
-- `paper-emendas/results/*.csv` — outputs numéricos (organizados em subpastas)
-- `paper-emendas/notebooks/verify.ipynb` — debug interativo
+- `paper-emendas/results/*.csv` — outputs numéricos
+- `paper-emendas/results/n3_progress.md` — progresso da rodada definitiva
+- `_archive/` — documentos pré-defesa (MUSTDO antigo, CHECKLIST, IV_VALIDATION)
+
+---
+
+# Fase pós-defesa (Junho 2026)
+
+Defesa de qualificação ocorreu em 02/06/2026 com Daniel Cajueiro, Bernardo Mueller e
+Rafael Terra. Comentários da banca consolidados em `MUSTDO_v2.md`.
+
+## Novos dados integrados (jun/2026)
+
+### Multi-RP por deputado-voto
+
+Download de ~1,1 GB de bases adicionais (Portal Transparência bulk + Tesouro CKAN +
+SICONV + Câmara CMO PDFs + IFI/CGU notas técnicas). Documentado em
+`paper-emendas/docs/BUDGET_PROCESS.md`.
+
+Construção do painel multi-RP via `33_build_multi_rp_panel.py`:
+- `T_rp6_pre60_M`: RP-6 individual (finalidade definida), 60d pré-voto
+- `T_rp6_pix_pre60_M`: RP-6 transferência especial (Pix, EC 105/2019)
+- `T_rp8_pre60_M`: RP-8 comissão (matching via SICONV apoiadores)
+- `T_rp9_imputed_pre60_M`: RP-9 imputed via PARLAMENTAR_SOLICITANTE
+
+Cobertura Leg 56: RP-6 88%, Pix 50%, RP-8 0.3%, RP-9 imputed 3.2%.
+
+### Proxies de orçamento secreto
+
+Via `34_build_secret_budget_proxies.py`:
+- `d_rp9_solicitante`: dummy 0/1, deputado aparece como solicitante de RP-9 no ano
+- `share_pork_opaco`: (RP-8 + RP-9) / total pork por deputado-ano
+- `share_rp9`: RP-9 / total pork
+- `share_pix`: Pix / RP-6 total
+- `n_apoiamentos_opaco`: contagem de apoiamentos RP-8/RP-9
+
+## Outcome alternativo `y_centrao`
+
+Definição: voto coincide com a maioria do Centrão na mesma votação. Centrão = {PP,
+PL, Republicanos, Solidariedade, União, PTB, Avante, PSD, MDB} (literatura: Power,
+Melo, Limongi).
+
+Cobertura: 758 mil de 870 mil obs têm y_centrao válido. Média:
+- Leg 55: 0.737
+- Leg 56: 0.766
+
+## Análises follow-up T1-T5
+
+### Rodada inicial (`36_followup_analyses.py` e derivadas)
+
+Configuração reduzida `n_folds=2, n_reps=1` foi usada para acelerar. **Descobrimos
+posteriormente** que essa configuração produz variância Monte Carlo grande:
+- Mesma config, 3 seeds: theta varia 0.36 pp entre rodadas
+- T5 leg55_full Centrão deu +1.37** com uma rodada, +0.001 com outra
+
+**Decisão (17/06):** descartar todos os resultados follow-up com `n_reps=1` e
+re-rodar com `n_folds=3, n_reps=3` (idêntico ao main paper).
+
+### Rodada definitiva (`50_full_followup_n3.py`, em curso 18/06)
+
+Configuração `n_folds=3, n_reps=3`. Output incremental em `results/n3_*.csv` e
+`results/n3_progress.md`.
+
+T1: IV-DML com proxies como controles (base_pure vs base+proxies), 2 outcomes
+T2: Heterogeneidade por exposição RP-9 (Leg 56), 2 outcomes
+T3: ABS mediação Pix (OLS), 2 outcomes
+T4: Tercis MDS-Euclidean/Weak/Strong por leg, 2 outcomes
+T5: Centrão sub-amostras (5 amostras: Leg 55, Leg 56 full, pre-Lira, post-Lira,
+post-Lira excl. Centrão)
+
+**Resultados confirmados (n_reps=3):**
+
+| Análise | Gov outcome | Centrão outcome |
+|---|---|---|
+| Main (Leg 55) | +1.73** | (T5 leg55_full) +0.06 (n.s.) |
+| Main (Leg 56) | −0.94*** | (T5 leg56_full) −0.67** |
+| T5 pre-Lira | — | +0.87*** |
+| T5 post-Lira | — | +0.40** |
+| T5 post-Lira excl Centrão | — | +0.24 (n.s.) |
+| T2 RP-9 exposed (Leg 56) | −0.31 (n.s.) | −0.26 (n.s.) |
+| T2 RP-9 not exposed (Leg 56) | −0.99*** | −0.68** |
+
+T4 e T1 em curso.
+
+## Achados-chave pós-defesa
+
+1. **Centrão Leg 55 = nulo, Leg 56 pre-Lira = positivo, post-Lira positivo menor**:
+   pork compra alinhamento Centrão **apenas no início da era Bolsonaro**, e cai
+   após Lira tomar a Câmara (porque Centrão já está alinhado por design quando
+   controla a agenda).
+2. **Post-Lira sem Centrão = nulo**: o efeito post-Lira vem dos próprios deputados
+   Centrão (auto-reforço).
+3. **Substituição RP-6 ↔ RP-9**: backfire concentra nos não-expostos ao canal opaco
+   (T2). Magnitude gov > centrão.
+4. **Pix não é mediador real** (T3): proporção mediada cai a zero dentro de cada
+   legislatura.
+
+## Validação de correlações entre features novas
+
+Antes de usar T_rp* e proxies como controles, validamos correlações
+(`STATE_OF_PLAY.md` §3 corr matrix):
+
+- `emenda_M ↔ T_rp6_pre60_M` = 0.25 (moderada) → não usar como controle (vira
+  bad-control)
+- `T_rp6_pix_pre60_M ↔ share_pix` = 0.996 → usar só uma
+- `T_rp9_imputed ↔ share_pork_opaco ↔ d_rp9_solicitante` = 0.6-0.7 → usar só
+  `d_rp9_solicitante` por parcimônia
+
+Spec final de proxies em T1: `EXTRA_PROXIES = ["d_rp9_solicitante", "share_pix"]`.
+
+---
+
+## Sessão 21/06/2026 — Rodada definitiva + Narrativa F (Legislative Capture)
+
+### Configuração corrigida e definitiva
+
+Após investigação da variância Monte Carlo de `n_reps=1` (rodando 3 seeds dava theta entre +1.51 e +1.87 — gap de 0.36pp), todas as análises follow-up foram **re-rodadas com a configuração do main paper**: `n_folds=3, n_reps=3, iv_set=backlog`. Pipelines:
+
+- `source/50_full_followup_n3.py` (gov outcome, T1-T5) — 8.11h
+- `source/55_n3_pres_camara_orient.py` (y_pres_camara outcome, T1-T5) — 8.11h
+
+**Outputs estáveis** em `results/n3_*.csv` substituem completamente as rodadas 36_, 41_, 42_, 43_ com `n_reps=1`.
+
+### Achado central: Legislative Capture (Narrativa F)
+
+O backfire da Leg 56 **não significa que pork parou de funcionar**. Reconstruímos o outcome como alinhamento com o partido do presidente da Câmara (PMDB Cunha → DEM Maia → PP Lira):
+
+| Sub-amostra | θ (pp/R$M) | Interpretação |
+|---|---|---|
+| Leg 55 Maia (DEM, jul/2016-) | −2.76*** | DEM era coalizão Temer; coeficiente acompanha gov |
+| Leg 56 Maia (DEM, jan/2019-jan/2021) | +0.04 n.s. | DEM já não é mais coalizão Bolsonaro |
+| **Leg 56 Lira (PP, fev/2021+)** | **+0.33** | **Pork compra alinhamento com partido do prez Câmara** |
+| Leg 56 Lira excl PP | +0.32* | Robusto, não vem só dos próprios |
+| Leg 56 Lira excl Centrão | −0.06 n.s. | Efeito vive INTEIRAMENTE dentro do Centrão |
+
+**Reinterpretação substantiva**: o principal mudou — Executivo → liderança legislativa do Centrão. O instrumento de bargaining migrou junto com a captura procedural da Câmara após fev/2021.
+
+### Heterogeneidade por cargo legislativo (A.9.5)
+
+Tabela 13 do paper. Com Proxy P6 (`panel_proxy_cargos.csv` via `/orgaos/{id}/membros`):
+
+| Sub-amostra | θ (pp/R$M) |
+|---|---|
+| Leg 56 sem Mesa | −0.92*** |
+| Leg 56 Tier-2 (líder/pres comissão) | **−0.38 n.s.** |
+| Leg 56 sem Tier-2 | −1.03*** |
+
+Deputados em cargos institucionalmente relevantes são **insulados** do credibility cost — o backfire é concentrado em rank-and-file. Esse padrão é a manifestação observacional da legislative capture.
+
+### Robustez T quadrático (A.5)
+
+DML multi-treatment falhou (Gram matrix singular do ElasticNetCV). Substituímos por **IV-2SLS clássico** com controles reduzidos via QR rank-validation (11 covariáveis), within-deputy demeaning, SE cluster.
+
+- Pooled: θ_T = −0.071***, θ_T² = +0.012***, T* = 2.88 R$M
+- Leg 55: θ_T = −0.251***, θ_T² = +0.042***, T* = 2.99 R$M
+- Leg 56: θ_T = −0.020***, θ_T² = +0.004**, T* = 2.70 R$M
+
+U-shape em todas as legs com inflexão ~R$3M (acima do P90 da distribuição empírica). A aproximação linear da Tabela 4 é apropriada para a maioria das observações.
+
+### Robustez PEC 2 turnos (A.6)
+
+Identificadas 9 PECs com ambos os turnos no painel (3.383 obs deputado-PEC):
+
+| Spec | β (pp/R$1M) | p |
+|---|---|---|
+| OLS sem FE | +0.37** | 0.015 |
+| OLS + PEC FE | −0.21 | 0.258 |
+
+Amostra pequena. Sem FE há evidência fraca de movimento positivo entre turnos; com FE colapsa. Reportado como robustez no Apêndice G.
+
+### Mediação dupla Strong × Weak (A.9)
+
+Acharya-Blackwell-Sen com 2 mediadores simultâneos do paper-polarization:
+
+| Sample | β_T total | Indirect Strong | Indirect Weak |
+|---|---|---|---|
+| Leg 55 | +0.0111 | +0.0035 (**31%**) | −0.0002 (~0%) |
+| Leg 56 | −0.0030 | −0.0003 (10%) | ~0 (~0%) |
+
+**Strong é o canal de transmissão.** Weak não transmite efeito de pork em nenhum período. Reforça interpretação de credibility cost.
+
+### Pipeline final do paper
+
+Versão entregue em `docs/paper.pdf` (330 KiB, 54 pgs):
+
+- 13 tabelas principais + 7 tabelas de apêndice (B.13, C.14, D.15, E.16, F-quadratic, G-twopecs, H-dualmed)
+- 6 figuras: seasonality, composition, terciles, heterogeneity, legislative capture (novo), event STF, quadratic response (novo)
+- Narrativa F integrada em Abstract, §1, §6.4, §6.6, §7 (Discussion), §8 (Conclusion)
+
+### Pendências (98% completo)
+
+- **B.1**: revisão da página 10 com Bernardo (subjetivo, depende dele)
+- **B.x** P3 housekeeping: este METHODOLOGY_LOG (feito agora) + `response_to_committee.tex`
+
+Status global: 22 de 22 itens substantivos do MUSTDO_v2 entregues.
+

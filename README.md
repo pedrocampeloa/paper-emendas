@@ -1,81 +1,91 @@
-# How Pork Buys Votes — Public Choice version
+# When Pork Changes Hands
 
-**Pedro Campelo Albuquerque, Daniel O. Cajueiro, Rafael Terra** — University of Brasilia
+**Coalition Presidentialism, Legislative Capture, and the Price of Legislative Support in Brazil**
 
-> Causal estimates of the effect of parliamentary amendments (emendas) on legislative alignment in Brazil's Chamber of Deputies, using Double Machine Learning with Instrumental Variables (DML-PLIV).
->
-> Status: **rewriting for Public Choice** (May 2026). Pipeline rebuilt from raw to fix bugs in the previous version.
+**Pedro C. Campelo Albuquerque, Daniel O. Cajueiro, Rafael T. Menezes** — University of Brasília
 
-## TL;DR (preliminary, full DML still running)
+---
 
-- Per Public Choice feedback: main spec is **60d pre-vote window**; ±45d sym + 60d post-vote serve as robustness/placebo.
-- Reduced control set (~30 vars) is the main spec; full ~191 vars is replication appendix.
-- Bug-corrected pipeline now uses `dados/interim/panel/panel_features.csv` (NOT the old `features_v2.csv`).
+## Overview
 
-## Quick start
+This repository contains the source code, analysis scripts, and LaTeX manuscript for a paper that estimates the causal effect of parliamentary amendments on legislative alignment in Brazil's Chamber of Deputies, covering the 55th and 56th Legislatures (2015--2022). The identification strategy is an instrumental-variables Double Machine Learning (PLIV-DML) framework, with the ministry-execution backlog as the instrument.
 
-```bash
-# 1. Build data layer (≤5 min total for all 9 builders)
-cd /Users/pedrocampelo/Library/CloudStorage/Dropbox/UnB/Doc/projects/api_camara
-for b in b01_load_raw_votes b02_build_proposicoes b03_build_deputados \
-         b04_build_panel_base b05_build_features b06_build_emendas_panel \
-         b07_build_ivs b08_build_coalizao b09_build_polarization; do
-    python -m data_pipeline.builders.$b
-done
+## Main finding
 
-# 2. Run paper estimation
-cd paper-emendas/source
-python 01_run_dml.py --reps 3                    # ~30 min
-python 02_heterogeneities.py                     # ~10 min
-python 03_decomposition.py                       # ~5 min
-python 04_counterfactual_price.py --from-results # seconds
+The canonical pork-for-votes coefficient reverses sign between two consecutive legislatures once the outcome tracks the Executive:
 
-# 3. Verify cell-by-cell
-jupyter notebook ../notebooks/verify.ipynb
+| Legislature      | $\hat\theta$ (pp per R$1M) |
+|------------------|----------------------------|
+| 55 (Temer)       | $+1.73^{**}$               |
+| 56 (Bolsonaro)   | $-0.94^{***}$              |
+
+When the outcome is redefined to track the party of the *Chamber president* (rather than the Executive), the Bolsonaro-era coefficient turns positive under the Lira presidency ($+0.33$ pp per R$1M), robust to the exclusion of PP and absorbed entirely by the broader Centrão. We interpret the pattern as **legislative capture** of the pork channel: the bargain did not vanish, it changed institutional principal.
+
+## Repository layout
+
+```
+paper-emendas/
+├── docs/
+│   ├── figs/                     # Figures used in the paper (PDF)
+│   └── tex/
+│       ├── paper.tex             # Main manuscript
+│       ├── refs.bib              # Bibliography
+│       └── paper.pdf             # Compiled output
+├── source/                       # Analysis scripts (numbered by workflow stage)
+│   ├── _config.py, _utils.py     # Shared configuration and utilities
+│   ├── 01_*..29_*.py             # Feature engineering and dataset construction
+│   ├── 30_*..79_*.py             # Estimation, robustness, and heterogeneity
+│   ├── 80_*..93_*.py             # Figures and non-parametric robustness (Causal IV Forest)
+│   └── ...
+├── results/                      # Output CSVs and progress logs (regenerable)
+├── SPEC.md                       # Econometric specification
+├── METHODOLOGY_LOG.md            # Chronological log of estimation runs
+└── README.md
 ```
 
-## What's in `source/`
+## Data
 
-| Script | Output | Purpose |
-|---|---|---|
-| `_config.py` | — | Paths, control specs (REDUCED + FULL), hyper-params |
-| `_utils.py` | — | `load_modeling_panel`, `run_plr`, `run_pliv`, `extract_row` |
-| `01_run_dml.py` | `main_results.csv`, `main_fstage.csv`, `main_sargan.csv`, `main_falsification.csv` | PLR + PLIV per leg/IV/spec, plus 4 falsifications |
-| `02_heterogeneities.py` | `heterogeneity_R2_1_*.csv` … `R2_5_*.csv` | Coalizão vs oposição, alinhamento histórico, ano eleitoral, votos apertados, tipo de bill |
-| `03_decomposition.py` | `decomp_R2_7_*.csv` … `R2_9_*.csv` | RP-9 scenario, polarização, Oaxaca-Blinder gap |
-| `04_counterfactual_price.py` | `price_legislative_support.csv`, `counterfactual_alignment.csv` | R$/pp + Y(T=0) |
+The paper uses administrative records from three public sources:
 
-## What's in `data_pipeline/` (root level)
+- **Chamber of Deputies Open Data** (`dadosabertos.camara.leg.br`) — roll-call votes, party orientations, deputy identifiers, and legislative composition.
+- **Portal da Transparência** (`portaldatransparencia.gov.br`) — parliamentary amendments and ministry-level execution data.
+- **CEAP register** (Câmara dos Deputados) — deputy characteristics used as controls.
 
-Single shared pipeline across the four research papers. Replaces the old monolithic `build_features.py`. See `data_pipeline/README.md`.
+Data are not committed to this repository. The `dados/` directory is expected at the level above the repo root; see `_config.py` for the assumed paths. The scripts that download and clean the raw data live in the parent monorepo (`../shared/`).
 
-| Output | Used by |
-|---|---|
-| `panel_base.csv` | all papers (replaces `features_v2.csv`) |
-| `panel_features.csv` | all (the paper's controls) |
-| `panel_emendas_pre.csv` | emendas, discursos |
-| `iv_features.csv` | emendas |
-| `coalizao_partido_data.csv` | emendas (heterogeneidades) |
-| `polarizacao_votacao.csv` | emendas (R2.8) |
+## Reproducibility
 
-## Bugs fixed vs. previous version
+**Environment.** Python 3.11 with `doubleml`, `pandas`, `numpy`, `scikit-learn`, `statsmodels`, `econml` (for the Causal IV Forest robustness in Appendix A). Full environment defined in `../environment.yml` at the monorepo root.
 
-See [`MUSTDO.md`](MUSTDO.md) for the full list. Highlights:
+**Reproducing the main estimates.**
 
-- **B0.1**: 542k duplicate rows in `iv_features.csv` → now 0 duplicates by construction (`b07`).
-- **B0.3**: 11 idVotacao with 2 dates (votes spanning midnight) → now 1 canonical date per votação (`b01` uses `votacoes_file_.csv`).
-- **B0.4**: unit interpretation issue (`+0.52 pp/R$M` was misreported) → now `pp_per_unit` column makes units explicit.
-- **B0.5**: Sargan-Hansen rejecting silently → now reported with N-large discussion.
+```bash
+# From paper-emendas/
+conda activate loclin
+python source/30_pliv_main.py                    # Table 1: main coefficients
+python source/32_pliv_chamber_pres.py            # Table 6: Chamber-president outcome
+python source/80_table1_figure2_updated.py       # Figure 1 + Table 2
+python source/81_fig_polarization_trajectory.py  # Figure 2
+```
 
-## What changed from the old paper
+**Estimation configuration.** All PLIV-DML runs use cross-fitted ElasticNet nuisance functions with `n_folds=3` and `n_reps=3` (paper's preferred spec). The ministry-execution backlog instrument is defined in `_config.py` as `IV_SETS["backlog"] = ["iv_q4_no_ytd", "iv_ytd_exec_pct"]`.
 
-- **Sample size**: corrected panel has 869,902 (deputado × votação) rows for legs 55+56, vs the old paper's 1,288,167 (which was inflated by ~70% via merge bug).
-- **Magnitudes**: in pp per R$1M (interpretable), not in standardized SD units (which the old paper conflated with pp).
-- **Window**: main spec is now 60d pre-vote (Public Choice direction); old was ±45d.
+**Manuscript.** The paper compiles with `tectonic`:
 
-## Documentation
+```bash
+cd docs/tex && tectonic paper.tex
+```
 
-- [`SPEC.md`](SPEC.md) — econometric specification, identification, units convention
-- [`MUSTDO.md`](MUSTDO.md) — feedback dos professores e correções de bugs
-- `notebooks/verify.ipynb` — cell-by-cell verification
-- `data_pipeline/outputs/sanity/` — markdown sanity reports per builder
+## Files not in the repository
+
+- Raw and interim data (see `Data` above)
+- Trained model artifacts (regenerable from `source/`)
+- Local build artifacts (see `.gitignore`)
+
+## Citation
+
+If you use this work, please cite the paper. A Zenodo DOI will be added upon submission.
+
+## License
+
+Code is released under the MIT License.
