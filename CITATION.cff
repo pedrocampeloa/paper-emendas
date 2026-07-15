@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software or the accompanying paper, please cite as below."
+title: "When Pork Changes Hands: Coalition Presidentialism, Legislative Capture, and the Price of Legislative Support in Brazil"
+authors:
+  - family-names: "Campelo Albuquerque"
+    given-names: "Pedro Caiua"
+    affiliation: "University of Brasília"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Cajueiro"
+    given-names: "Daniel Oliveira"
+    affiliation: "University of Brasília"
+  - family-names: "Terra de Menezes"
+    given-names: "Rafael"
+    affiliation: "University of Brasília"
+type: article
+repository-code: "https://github.com/pedrocampeloa/paper-emendas"
+url: "https://github.com/pedrocampeloa/paper-emendas"
+license: MIT
+keywords:
+  - pork-barrel politics
+  - coalition presidentialism
+  - polarization
+  - instrumental variables
+  - Double Machine Learning
+  - legislative alignment
+  - Brazil

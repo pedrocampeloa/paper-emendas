@@ -51,24 +51,36 @@ The paper uses administrative records from three public sources:
 - **Portal da Transparência** (`portaldatransparencia.gov.br`) — parliamentary amendments and ministry-level execution data.
 - **CEAP register** (Câmara dos Deputados) — deputy characteristics used as controls.
 
-Data are not committed to this repository. The `dados/` directory is expected at the level above the repo root; see `_config.py` for the assumed paths. The scripts that download and clean the raw data live in the parent monorepo (`../shared/`).
+Analysis-ready panel files (approximately 1.4 GB) are archived on Zenodo alongside the release of this repository. Raw dumps are not archived: they are freely downloadable from the public APIs above, and the scripts that build the panels from those dumps live in the parent monorepo (`../shared/` and `../data_pipeline/`). See the *Reproducibility* section below for details.
 
 ## Reproducibility
 
-**Environment.** Python 3.11 with `doubleml`, `pandas`, `numpy`, `scikit-learn`, `statsmodels`, `econml` (for the Causal IV Forest robustness in Appendix A). Full environment defined in `../environment.yml` at the monorepo root.
+**Environment.** Python 3.11 with `doubleml`, `pandas`, `numpy`, `scikit-learn`, `statsmodels`, and `econml` (for the Causal IV Forest robustness in Appendix A). See `environment.yml` for pinned versions.
 
-**Reproducing the main estimates.**
+**Analysis-ready data.** The panel files consumed by the estimation scripts (`panel_features.csv`, `panel_base.csv`, `panel_emendas_pre.csv`, `iv_features.csv`, and the auxiliary proxy panels) are archived on Zenodo alongside the frozen release of this repository. They total roughly 1.4 GB and are the direct inputs to the PLIV-DML runs. To reproduce all estimates without regenerating the panels from raw sources:
 
 ```bash
-# From paper-emendas/
+# 1. Clone this repository at the tagged release
+git clone https://github.com/pedrocampeloa/paper-emendas.git
+cd paper-emendas
+
+# 2. Download the panel bundle from Zenodo and unpack under dados/interim/panel/
+#    (replace <ZENODO_URL> with the DOI landing page's data archive URL)
+mkdir -p ../dados/interim/panel
+curl -L -o panel_bundle.tar.gz <ZENODO_URL>
+tar -xzf panel_bundle.tar.gz -C ../dados/interim/panel
+
+# 3. Run any of the numbered scripts under source/
 conda activate loclin
-python source/30_pliv_main.py                    # Table 1: main coefficients
-python source/32_pliv_chamber_pres.py            # Table 6: Chamber-president outcome
+python source/30_pliv_main.py                    # Table 1
+python source/32_pliv_chamber_pres.py            # Table 6
 python source/80_table1_figure2_updated.py       # Figure 1 + Table 2
 python source/81_fig_polarization_trajectory.py  # Figure 2
 ```
 
-**Estimation configuration.** All PLIV-DML runs use cross-fitted ElasticNet nuisance functions with `n_folds=3` and `n_reps=3` (paper's preferred spec). The ministry-execution backlog instrument is defined in `_config.py` as `IV_SETS["backlog"] = ["iv_q4_no_ytd", "iv_ytd_exec_pct"]`.
+**Estimation configuration.** All PLIV-DML runs use cross-fitted ElasticNet nuisance functions with `n_folds=3` and `n_reps=3` (paper's preferred spec). The ministry-execution backlog instrument is defined in `_config.py` as `IV_SETS["backlog"] = ["iv_q4_no_ytd", "iv_ytd_exec_pct"]`. Point estimates and confidence intervals are written to `results/*.csv` and can be diffed against the archived CSVs to confirm exact replication.
+
+**Feature engineering.** The scripts that build the panel files from the raw Câmara and Portal da Transparência dumps live in the parent monorepo (`../shared/` and `../data_pipeline/`) and are not archived on Zenodo. Regenerating the panel from raw sources requires those scripts plus the raw dumps (~10 GB), which are downloadable from the public APIs cited in the paper.
 
 **Manuscript.** The paper compiles with `tectonic`:
 
@@ -84,8 +96,19 @@ cd docs/tex && tectonic paper.tex
 
 ## Citation
 
-If you use this work, please cite the paper. A Zenodo DOI will be added upon submission.
+If you use this code, the archived panels, or the paper, please cite as (Zenodo DOI to be filled in after the first release):
+
+```bibtex
+@misc{campelo_cajueiro_menezes_2026,
+  author       = {Campelo Albuquerque, Pedro Caiua and Cajueiro, Daniel Oliveira and Terra de Menezes, Rafael},
+  title        = {When Pork Changes Hands: Coalition Presidentialism, Legislative Capture, and the Price of Legislative Support in Brazil},
+  year         = 2026,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.XXXXXXX},
+  url          = {https://doi.org/10.5281/zenodo.XXXXXXX}
+}
+```
 
 ## License
 
-Code is released under the MIT License.
+Code is released under the MIT License (see `LICENSE`). The manuscript itself is subject to the copyright terms of the publishing journal.

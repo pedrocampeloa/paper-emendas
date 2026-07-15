@@ -1,0 +1,40 @@
+{
+  "title": "When Pork Changes Hands: Coalition Presidentialism, Legislative Capture, and the Price of Legislative Support in Brazil",
+  "description": "Replication code, analysis-ready panel data, and manuscript for a paper that estimates the causal effect of parliamentary amendments on legislative alignment in Brazil's Chamber of Deputies, covering the 55th and 56th Legislatures (2015-2022). The identification strategy is an instrumental-variables Double Machine Learning (PLIV-DML) framework, with the ministry-execution backlog as the instrument. The canonical pork-for-votes coefficient reverses sign between two consecutive legislatures once the outcome tracks the Executive, and re-emerges positive under the Chamber-president-alignment outcome after Arthur Lira assumes the Chamber presidency in February 2021. We interpret the pattern as legislative capture of the pork channel.",
+  "creators": [
+    {
+      "name": "Campelo Albuquerque, Pedro Caiua",
+      "affiliation": "University of Brasília"
+    },
+    {
+      "name": "Cajueiro, Daniel Oliveira",
+      "affiliation": "University of Brasília"
+    },
+    {
+      "name": "Terra de Menezes, Rafael",
+      "affiliation": "University of Brasília"
+    }
+  ],
+  "keywords": [
+    "pork-barrel politics",
+    "coalition presidentialism",
+    "polarization",
+    "instrumental variables",
+    "Double Machine Learning",
+    "legislative alignment",
+    "Brazil",
+    "Chamber of Deputies"
+  ],
+  "license": "MIT",
+  "upload_type": "publication",
+  "publication_type": "article",
+  "access_right": "open",
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/pedrocampeloa/paper-emendas",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    }
+  ]
+}
