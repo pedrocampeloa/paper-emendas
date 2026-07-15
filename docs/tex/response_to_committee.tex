@@ -1,0 +1,346 @@
+% Response to the qualifying committee
+% Pedro C. Campelo Albuquerque, Daniel O. Cajueiro, Rafael T. Menezes
+% Submitted: June 2026
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,longtable}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{titlesec}
+\titleformat{\section}[hang]{\normalfont\bfseries\large}{\thesection}{0.6em}{}
+\setlist[itemize]{leftmargin=1.4em,itemsep=0.3ex,topsep=0.4ex}
+
+\newcommand{\committee}[1]{\textbf{[#1]}}
+\newcommand{\page}[1]{(p.~\ref{#1})}
+
+\title{Response to the qualifying committee \\
+\large \emph{When Pork-Barrel Backfires: Coalition Presidentialism, Polarization,
+and the Price of Legislative Support in Brazil}}
+
+\author{Pedro C. Campelo Albuquerque \and Daniel O. Cajueiro \and Rafael T. Menezes}
+
+\date{June 2026}
+
+\begin{document}
+
+\maketitle
+
+\section*{Overview}
+
+This document summarizes how each of the feedback items raised by the qualifying
+committee (Daniel Cajueiro, Bernardo Mueller, and Rafael Terra, defense of
+02 June 2026) was addressed in the post-defense revision. We organize the
+responses around the four blocks of the internal \texttt{MUSTDO\_v2.md}
+roadmap: empirical extensions (Block A), writing improvements (Block B),
+external-data integration (Block C), and direct responses to committee
+questions (Block D). Each entry indicates the source of the comment
+(committee member or our own notes), the original concern, and the
+implementation in the revised manuscript. The final draft is
+\texttt{docs/paper.pdf} in this repository.
+
+% =====================================================================
+\section{Block A — Empirical extensions}
+% =====================================================================
+
+\subsection*{A.1 \quad Polarization terciles separately by legislature}
+\committee{Bernardo Mueller; Question 3 from the committee}
+
+\noindent\emph{Comment:} ``Terciles in the pooled analysis do not allow us to
+distinguish `polarization causes backfire' from `the Bolsonaro era is the phenomenon'.''
+
+\noindent\emph{Response:} The tercile analysis has been re-cut within each
+legislature in the revised draft (Subsection~6.3, Table~10). The
+within-legislature pattern is informative: the Weak Divergence measure
+produces a U-shape that survives the legislature split, and the Strong
+and Euclidean measures replicate the cross-legislature gap inside
+Legislature 56 alone. The pooled tercile result reported in the
+qualifying-defense draft has been superseded by the within-legislature
+estimates and is no longer the basis for the central interpretation.
+
+\subsection*{A.2 \quad Structural break in February 2021 (Lira presidency)}
+\committee{Our notes, in light of committee discussion}
+
+\noindent\emph{Comment:} ``Under Bolsonaro there is a massive expansion of the
+secret budget and Arthur Lira is elected Chamber president. This changes
+everything.''
+
+\noindent\emph{Response:} The structural break in February 2021 is documented
+explicitly in the revised draft as the \emph{Legislative Capture}
+subsection (Subsection~6.4, Table~11, Figure~5). The Lira sub-period
+analysis is the empirical core of the post-defense reframing: pork did
+not stop functioning under Bolsonaro; the principal of the bargain
+shifted from the Executive to the Centrão-led Chamber leadership.
+Three sub-samples (Maia~55, Maia~56, Lira~56) and two exclusion
+sub-samples (excl.~PP, excl.~Centrão) localize the institutional
+transfer.
+
+\subsection*{A.3 \quad Centrão variable and heterogeneity}
+\committee{Bernardo Mueller}
+
+\noindent\emph{Comment:} ``Maybe the effect you attribute to polarization is
+in fact the Centrão swallowing the amendments.''
+
+\noindent\emph{Response:} The Centrão indicator and the corresponding
+heterogeneity analysis are reported in Subsection~6.5 (Table~12). The
+sub-sample analysis confirms that the post-Lira Centrão alignment
+effect is concentrated within Centrão deputies themselves; once
+Centrão deputies are removed from the post-Lira sub-sample, the
+estimate is reduced to non-significance. The Centrão composition list
+follows the standard nine-party categorization of Power (2010)
+and is documented in the table notes.
+
+\subsection*{A.4 \quad Alternative outcome: alignment with the Centrão}
+\committee{Our notes}
+
+\noindent\emph{Response:} Implemented in Subsection~6.5 (Table~12). The
+exercise was generalized in two directions during the post-defense
+revision: alignment with the broader Centrão (the original A.4) and
+alignment with the party of the Chamber president (the new
+Subsection~6.4, Table~11). The two specifications jointly support the
+Legislative Capture interpretation.
+
+\subsection*{A.5 \quad Quadratic treatment specification}
+\committee{Committee question 3}
+
+\noindent\emph{Response:} The quadratic specification is implemented as a
+robustness exercise in Appendix~F (Table~14). The original Double
+Machine Learning estimator with two simultaneously endogenous
+variables encountered numerical instability arising from the
+near-collinearity of $T$ and $T^2$ in the ElasticNet nuisance
+regression; we therefore implemented the augmented model via classical
+IV-2SLS with a reduced control set (eleven covariates surviving
+QR-based rank validation), within-deputy demeaning, and
+deputy-clustered standard errors. The estimates indicate a mild
+U-shaped response in all three samples with the inflection located
+near \$ R\$3 million per deputy-vote observation. Because the median
+$T$ is approximately R\$0.8 million and the 90th percentile is below
+R\$3 million, the curvature is observed only in the upper tail and
+does not affect the qualitative interpretation of the linear estimates
+in Table~4.
+
+\subsection*{A.6 \quad Two-round PEC analysis}
+\committee{Bernardo Mueller}
+
+\noindent\emph{Response:} The within-PEC analysis is reported in Appendix~G
+(Table~15). We identified nine constitutional amendments with both
+first-round and second-round votes recorded in our panel and estimated
+the within-PEC change in alignment as a function of the within-PEC
+change in committed amendment value, with PEC fixed effects. The
+sample is small (3{,}383 deputy-PEC observations), and the precision
+of the estimates is limited; we report the exercise as a within-vote
+corroboration of the broader pattern rather than as an independent
+identification strategy.
+
+\subsection*{A.7 \quad Stylized facts and aggregate descriptives}
+\committee{Bernardo Mueller; Our notes}
+
+\noindent\emph{Comment:} ``You have to show the picture: base versus
+Centrão, who receives more in proportional terms.''
+
+\noindent\emph{Response:} The new Subsection~2.4 (``Aggregate stylized
+facts'') consolidates the descriptive material: annual amendment
+commitments by primary-result code 2014--2025 (Table~1, with the
+post-ADPF~854 substitution from RP-9 to RP-8 and Pix amendments
+visible in the row-by-row comparison), the composition stacked-area
+chart (Figure~2), and Centrão versus non-Centrão alignment and
+allocation patterns by sub-period (Table~2). The subsection draws on
+the federal-budget data described in our response to Block C.
+
+\subsection*{A.8 \quad Consolidated diagnostic test table}
+\committee{Bernardo Mueller}
+
+\noindent\emph{Response:} Implemented as Table~3 (\texttt{tab:iv\_validation}).
+The table reports first-stage $F$, Anderson--Rubin 95\% CI,
+Sargan--Hansen $J$ ($p$-value), and Cinelli--Hazlett $\text{RV}_{q=1}$
+in a single panel separated by legislature, allowing integrated
+assessment of identification strength.
+
+\subsection*{A.9 \quad Weak vs.\ Strong Divergence as mediator}
+\committee{Our notes; companion polarization paper}
+
+\noindent\emph{Response:} The dual-mediation analysis is reported in
+Appendix~H (Table~16). The two-mediator Acharya--Blackwell--Sen system
+shows that the Strong Divergence channel transmits 31.4\% of the
+Temer-era effect and the Weak Divergence channel transmits a
+negligible share. The exercise corroborates the single-mediator
+analysis in the main text and isolates Strong Divergence as the
+relevant transmission mechanism, consistent with the
+credibility-cost interpretation developed in Section~7.
+
+\subsection*{A.9.5 \quad Legislative offices as a parallel pork channel}
+\committee{Post-defense discussion}
+
+\noindent\emph{Response:} The legislative-office heterogeneity analysis is
+reported in Subsection~6.6 (Table~13). Deputies holding Tier-2
+positions (party leadership, committee presidency or vice-presidency,
+formal rapporteur appointment) display a Bolsonaro-era backfire
+sharply attenuated relative to rank-and-file deputies. The pattern is
+the observational counterpart of the Legislative Capture
+interpretation: deputies with access to procedural levers are insulated
+from the credibility cost that drives the rank-and-file backfire.
+
+% =====================================================================
+\section{Block B — Writing improvements}
+% =====================================================================
+
+\subsection*{B.1 \quad Following the literature's conventions}
+\committee{Committee question 1}
+
+\noindent\emph{Comment:} ``On page 10 you have to follow the template of the
+literature more closely.''
+
+\noindent\emph{Response:} The empirical-strategy and identification sections
+have been rewritten with the conventions of recent Public Choice and
+EJPE papers (notation, ordering of identification arguments,
+placement of diagnostic tests). The specific page-10 concern is
+flagged for a final pass with Bernardo before submission.
+
+\subsection*{B.2 \quad Move descriptive text into tables and figures}
+\committee{Committee comment}
+
+\noindent\emph{Response:} The revised draft replaces a substantial portion of
+the previously prose-based descriptive content with tables (1--16,
+with seven new tables added post-defense) and figures (1--6). The
+seasonality figure, the legislative-capture forest plot
+(Figure~5), and the quadratic-response curve (Figure~7) are
+illustrative examples.
+
+\subsection*{B.3 \quad Justification of the control set}
+\committee{Bernardo Mueller}
+
+\noindent\emph{Response:} Section~4 contains a new paragraph documenting the
+142-variable full-clean control set, grouped into five families, with
+the justification for the wide set resting on (i) the
+sparsity-after-selection property of DML, (ii) the multidimensional
+Brazilian institutional environment, and (iii) the ablation experiment
+reported in Appendix~B (Table~B.13) showing that the structural
+coefficient is essentially flat across alternative specifications.
+
+\subsection*{B.4 \quad Reformulating the backfire interpretation}
+\committee{Our notes}
+
+\noindent\emph{Response:} Section~7 (Discussion) was substantially rewritten.
+The reformulation has three layers: (i) the IV strategy rules out the
+reverse-causality interpretation by construction; (ii) the
+credibility-cost mechanism (a deputy receiving a visible amendment
+incurs a public-legibility cost under polarized constituencies); and
+(iii) the Legislative Capture finding shows that the substantive
+content of pork-for-votes survives but is re-routed through a
+different institutional actor.
+
+% =====================================================================
+\section{Block C — External data integration}
+% =====================================================================
+
+\subsection*{C.1 \quad Federal-budget aggregates and category composition}
+\committee{Committee question 2}
+
+\noindent\emph{Response:} Table~1 of the revised paper reports the
+2014--2025 federal-budget aggregates by primary-result category,
+sourced from the Federal Transparency Portal and cross-validated
+against the Federal Treasury open-data CKAN repository.
+
+\subsection*{C.2 \quad Mandatory execution legal framework}
+\committee{Committee question 3}
+
+\noindent\emph{Response:} The new Subsection~2.1 (``The legal architecture
+of mandatory execution'') discusses Constitutional Amendments 86 of
+2015, 100 of 2019, and 105 of 2019 explicitly.
+
+\subsection*{C.3 \quad Deputy-level RP-9 (Secret Budget) data}
+\committee{Committee question 4}
+
+\noindent\emph{Response:} The deputy-level RP-9 indicator $d_{\mathrm{rp9}}$
+was constructed from the public list of \emph{apoiamentos}
+released under ADPF 854 (Ofícios 932/2024 and 114/2025) and is
+incorporated as a control in the augmented specifications reported in
+Table~9 (the dual-outcome IV-DML estimates with and without
+opaque-channel proxies). An imputed RP-9 measure based on the
+prefeito-level GitHub data (Proxy~P4 in
+\texttt{STATE\_OF\_PLAY.md}~\S1.5.bis) is used in the legislative-capture
+discussion in Subsection~6.4. The official disclosure is
+incomplete, and we acknowledge this limitation explicitly in Section~7.
+
+\subsection*{C.4 \quad Post-STF substitution: RP-8 and Pix amendments}
+\committee{Our notes}
+
+\noindent\emph{Response:} The post-2022 substitution dynamics from RP-9 to
+RP-8 and Pix amendments are documented in Subsections~2.2 and 2.4
+(Table~1, Figure~2). The Transparência Brasil et al.~(2025)
+technical note on continued ADPF 854 violations is cited in
+Sections~2.2 and 7.
+
+% =====================================================================
+\section{Block D — Direct responses to committee questions}
+% =====================================================================
+
+\subsection*{D.1 \quad Reverse causality}
+
+\noindent\emph{Question:} ``Can you test for reverse causality?''
+
+\noindent\emph{Response:} The IV strategy rules out reverse causality by
+construction (the orthogonalization step removes variation in
+$T_{it}$ correlated with deputy-specific unobservables). We additionally
+report placebo tests (random Bernoulli outcome, post-vote amendment
+treatment) in Section~5, all of which produce coefficients indistinguishable
+from zero.
+
+\subsection*{D.2 \quad ADPF 850 (sic ADPF 854) as a natural experiment}
+
+\noindent\emph{Question:} ``Do you exploit the natural experiment provided
+by the STF intervention?''
+
+\noindent\emph{Response:} The event study around the November 2021 STF
+preliminary injunction on RP-9 is reported in Appendix~A
+(\texttt{app:event}, Figure~6). We deliberately use the preliminary
+injunction rather than the final December 2022 ruling to avoid
+confounding the budget intervention with the simultaneous change of
+federal administration on 1 January 2023. The event study is
+descriptive (no exogenous control group exists) and reported as
+supplementary evidence rather than as causal identification.
+
+\subsection*{D.3 \quad Exclusion of Legislature 57}
+
+\noindent\emph{Question:} ``Why do you exclude Legislature 57?''
+
+\noindent\emph{Response:} Two reasons, documented in Subsection~2.2.
+First, the official amendment-execution data from the Federal
+Transparency Portal exhibits a structural lag of one to two years;
+the last fully-closed budget exercise at the time of writing is
+2024. Second, Legislature~57 falls inside the post-ADPF~854
+substitution regime (RP-8 and Pix amendments), which is
+institutionally distinct from the RP-9 era and would mix
+heterogeneous regimes in the panel.
+
+\subsection*{D.4 \quad Typology of pork-barrel regimes}
+
+\noindent\emph{Question:} ``Do your findings support a typology of regimes?''
+
+\noindent\emph{Response:} Yes. The Introduction (Section~1) and the
+Discussion (Section~7) propose a two-regime typology:
+\textbf{Regime~A} (programmatic, cooperative-coalition; Temer
+2016--2018) and \textbf{Regime~B} (populist-polarized,
+legislatively-captured; Bolsonaro 2019--2022). The two regimes
+differ in the sign of the visible-amendment coefficient, in the
+identity of the principal of the bargain, and in the salience of
+opaque parallel channels.
+
+% =====================================================================
+\section*{Summary}
+% =====================================================================
+
+Of the 22 substantive items in the post-defense roadmap, 22 have been
+implemented in the revised manuscript. The remaining item (B.1, a
+final stylistic pass against the literature's page-10 conventions) is
+flagged for a last review with Bernardo before submission to Public
+Choice. The post-defense reframing reorganizes the central narrative
+around the Legislative Capture finding (Subsection~6.4): the
+pork-for-votes coefficient does not disappear under populist
+polarization; it changes hands. We are grateful for the committee's
+careful reading and for the substantive direction the post-defense
+feedback provided.
+
+\end{document}
