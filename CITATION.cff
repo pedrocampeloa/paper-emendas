@@ -15,12 +15,12 @@ authors:
 type: article
 repository-code: "https://github.com/pedrocampeloa/paper-emendas"
 url: "https://github.com/pedrocampeloa/paper-emendas"
-doi: "10.5281/zenodo.21378906"
+doi: "10.5281/zenodo.21378905"
 license: MIT
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.21378906"
-    description: "Zenodo DOI of the replication package (concept DOI)"
+    value: "10.5281/zenodo.21378905"
+    description: "Zenodo concept DOI (always resolves to the latest version)"
 keywords:
   - pork-barrel politics
   - coalition presidentialism

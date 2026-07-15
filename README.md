@@ -55,7 +55,7 @@ Analysis-ready panel files (approximately 1.4 GB) are archived on Zenodo alongsi
 
 ## Reproducibility
 
-**Replication package DOI:** [10.5281/zenodo.21378906](https://doi.org/10.5281/zenodo.21378906)
+**Replication package DOI:** [10.5281/zenodo.21378905](https://doi.org/10.5281/zenodo.21378905)
 
 **Environment.** Python 3.11 with `doubleml`, `pandas`, `numpy`, `scikit-learn`, `statsmodels`, and `econml` (for the Causal IV Forest robustness in Appendix A). See `environment.yml` for pinned versions.
 
@@ -69,7 +69,7 @@ cd paper-emendas
 # 2. Download the panel bundle from Zenodo and unpack under dados/interim/panel/
 mkdir -p ../dados/interim/panel
 curl -L -o panel_bundle.tar.gz \
-  https://zenodo.org/records/21378906/files/panel_bundle.tar.gz
+  https://zenodo.org/records/21379015/files/panel_bundle.tar.gz
 tar -xzf panel_bundle.tar.gz -C ../dados/interim/panel
 
 # 3. Run any of the numbered scripts under source/
@@ -106,8 +106,8 @@ If you use this code, the archived panels, or the paper, please cite as (Zenodo 
   title        = {When Pork Changes Hands: Coalition Presidentialism, Legislative Capture, and the Price of Legislative Support in Brazil},
   year         = 2026,
   publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.21378906},
-  url          = {https://doi.org/10.5281/zenodo.21378906}
+  doi          = {10.5281/zenodo.21378905},
+  url          = {https://doi.org/10.5281/zenodo.21378905}
 }
 ```
 
