@@ -13,8 +13,8 @@ authors:
     given-names: "Rafael"
     affiliation: "University of Brasília"
 type: article
-repository-code: "https://github.com/pedrocampeloa/paper-emendas"
-url: "https://github.com/pedrocampeloa/paper-emendas"
+repository-code: "https://github.com/pedrocampeloa/pork-votes-brazil"
+url: "https://github.com/pedrocampeloa/pork-votes-brazil"
 doi: "10.5281/zenodo.21378905"
 license: MIT
 identifiers:

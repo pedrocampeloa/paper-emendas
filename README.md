@@ -24,7 +24,7 @@ When the outcome is redefined to track the party of the *Chamber president* (rat
 ## Repository layout
 
 ```
-paper-emendas/
+.
 ├── docs/
 │   ├── figs/                     # Figures used in the paper (PDF)
 │   └── tex/
@@ -63,8 +63,8 @@ Analysis-ready panel files (approximately 1.4 GB) are archived on Zenodo alongsi
 
 ```bash
 # 1. Clone this repository at the tagged release
-git clone https://github.com/pedrocampeloa/paper-emendas.git
-cd paper-emendas
+git clone https://github.com/pedrocampeloa/pork-votes-brazil.git
+cd pork-votes-brazil
 
 # 2. Download the panel bundle from Zenodo and unpack under dados/interim/panel/
 mkdir -p ../dados/interim/panel
@@ -98,7 +98,7 @@ cd docs/tex && tectonic paper.tex
 
 ## Citation
 
-If you use this code, the archived panels, or the paper, please cite as (Zenodo DOI to be filled in after the first release):
+If you use this code, the archived panels, or the paper, please cite as:
 
 ```bibtex
 @misc{campelo_cajueiro_menezes_2026,
