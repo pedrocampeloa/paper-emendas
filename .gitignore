@@ -79,3 +79,6 @@ docs-old/
 source-old/
 docs/tex/paper.tex.bak_before_rewrite_20260623
 docs/paper.pdf
+
+# Zenodo upload artifacts (upload to Zenodo, not to git)
+zenodo_upload/
