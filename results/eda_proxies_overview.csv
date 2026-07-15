@@ -1,0 +1,11 @@
+legis;metric;n_obs;n_positive;pct_positive;mean_when_positive
+55;d_rp9_solicitante;226308;0;0.0;
+55;n_apoiamentos_opaco;226308;0;0.0;0.0
+55;share_pork_opaco;226308;0;0.0;0.0
+55;share_rp9;226308;0;0.0;0.0
+55;share_pix;226308;0;0.0;0.0
+56;d_rp9_solicitante;643594;20755;3.22;
+56;n_apoiamentos_opaco;643594;22623;3.52;1.5356
+56;share_pork_opaco;643594;22623;3.52;0.3963
+56;share_rp9;643594;20755;3.22;0.3745
+56;share_pix;643594;322282;50.08;0.3284

@@ -1,0 +1,13 @@
+var;coef;se;tstat;pval;outcome
+const;-0.033964;0.008044;-4.222;2.4e-05;gov
+pol_paper_euclidean_mds;-0.001994;0.000294;-6.784;0.0;gov
+pol_paper_forte_mds;-0.085066;0.021361;-3.982;6.8e-05;gov
+pol_paper_fraca_mds;0.136726;0.398278;0.343;0.731378;gov
+const;0.012113;0.001625;7.456;0.0;pres
+pol_paper_euclidean_mds;-0.001646;6.8e-05;-24.162;0.0;pres
+pol_paper_forte_mds;-0.161721;0.008215;-19.686;0.0;pres
+pol_paper_fraca_mds;0.636571;0.10728;5.934;0.0;pres
+const;-0.027981;0.002134;-13.113;0.0;centrao
+pol_paper_euclidean_mds;-0.001063;9.8e-05;-10.804;0.0;centrao
+pol_paper_forte_mds;-0.023822;0.005265;-4.525;6e-06;centrao
+pol_paper_fraca_mds;0.381582;0.067662;5.64;0.0;centrao

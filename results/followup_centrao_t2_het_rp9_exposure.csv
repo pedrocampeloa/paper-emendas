@@ -1,0 +1,3 @@
+model;iv_set;coef_sd;se_sd_cluster;pp_per_unit;ci95_lo_pp;ci95_hi_pp;pval;stars;n_obs;n_clusters;n_controls;std_T;subgroup
+PLIV_FE_cluster;backlog;-0.001725;0.012537;-0.0726;-1.1064;0.9612;0.890529;;20755;42;125;2.376833;rp9_exposed
+PLIV_FE_cluster;backlog;-0.022782;0.009039;-0.9318;-1.6564;-0.2072;0.01172;**;622839;597;144;2.445002;rp9_not_exposed

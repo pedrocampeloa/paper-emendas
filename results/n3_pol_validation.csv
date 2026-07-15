@@ -1,0 +1,10 @@
+model;iv_set;coef_sd;se_sd_cluster;pp_per_unit;ci95_lo_pp;ci95_hi_pp;pval;stars;n_obs;n_clusters;n_controls;std_T;outcome;subperiod;tercil
+PLIV_FE_cluster;backlog;-6.2e-05;2.5e-05;-0.0054;-0.0098;-0.0011;0.014797;**;52372;558;91;1.145849;y_pres;leg55_maia;low
+PLIV_FE_cluster;backlog;-0.000168;6.9e-05;-0.005;-0.0091;-0.001;0.014688;**;47286;593;97;3.334765;y_pres;leg55_maia;mid
+PLIV_FE_cluster;backlog;-5e-06;5e-06;-0.0005;-0.0015;0.0005;0.31422;;19731;520;88;0.971116;y_pres;leg55_maia;high
+PLIV_FE_cluster;backlog;-3e-06;1.1e-05;-0.0002;-0.0013;0.0009;0.750442;;84221;542;103;1.924099;y_pres;leg56_maia;low
+PLIV_FE_cluster;backlog;-1e-05;7e-06;-0.0005;-0.0012;0.0002;0.167292;;77614;536;94;1.972327;y_pres;leg56_maia;mid
+PLIV_FE_cluster;backlog;-2e-06;4e-06;-0.0002;-0.0013;0.0008;0.668016;;57930;532;101;0.805328;y_pres;leg56_maia;high
+PLIV_FE_cluster;backlog;0.008772;0.016197;0.4574;-1.1981;2.113;0.588108;;96254;544;102;1.917635;y_gov;leg56_maia;low
+PLIV_FE_cluster;backlog;0.000122;0.006215;0.0062;-0.6149;0.6273;0.984331;;80086;536;91;1.961279;y_gov;leg56_maia;mid
+PLIV_FE_cluster;backlog;0.003478;0.00371;0.4332;-0.4726;1.3391;0.348574;;60605;532;98;0.802772;y_gov;leg56_maia;high

@@ -1,0 +1,10 @@
+model;iv_set;coef_sd;se_sd_cluster;pp_per_unit;ci95_lo_pp;ci95_hi_pp;pval;stars;n_obs;n_clusters;n_controls;std_T;subgroup;period
+PLIV_FE_cluster;backlog;-0.021783;0.005812;-0.8895;-1.3547;-0.4244;0.000178;***;641139;597;102;2.448892;no_mesa;pooled
+PLIV_FE_cluster;backlog;0.004165;0.00662;0.2092;-0.4426;0.8611;0.529224;;234490;549;102;1.990521;no_mesa;pre_lira
+PLIV_FE_cluster;backlog;0.009189;0.004373;0.3488;0.0235;0.6742;0.035592;**;406649;569;102;2.634182;no_mesa;post_lira
+PLIV_FE_cluster;backlog;-0.012473;0.009415;-0.5091;-1.2621;0.244;0.185219;;217061;263;101;2.45031;tier2;pooled
+PLIV_FE_cluster;backlog;0.002091;0.012974;0.1074;-1.199;1.4139;0.871973;;66028;165;101;1.946491;tier2;pre_lira
+PLIV_FE_cluster;backlog;0.004775;0.007197;0.1826;-0.3568;0.722;0.50702;;151033;233;101;2.615047;tier2;post_lira
+PLIV_FE_cluster;backlog;-0.023962;0.007634;-0.9893;-1.607;-0.3715;0.001696;***;426533;522;102;2.422271;no_tier2;pooled
+PLIV_FE_cluster;backlog;0.006884;0.007793;0.3448;-0.4202;1.1098;0.377062;;170917;418;102;1.99665;no_tier2;pre_lira
+PLIV_FE_cluster;backlog;0.012012;0.005501;0.4585;0.0469;0.87;0.028996;**;255616;425;102;2.620035;no_tier2;post_lira

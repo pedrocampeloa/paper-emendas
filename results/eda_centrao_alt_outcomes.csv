@@ -1,0 +1,13 @@
+outcome;definicao;leg;n_total;n_with_outcome;pct_cobertura;mean_outcome;corr_y_gov
+y_cent_m5;ori_centrao_maioria5;55;226308;0;0.0;;
+y_cent_m5;ori_centrao_maioria5;56;643594;470162;73.05;0.7673;0.9322
+y_cent_m6;ori_centrao_maioria6;55;226308;0;0.0;;
+y_cent_m6;ori_centrao_maioria6;56;643594;362268;56.29;0.7735;0.9544
+y_cent_m7;ori_centrao_maioria7;55;226308;0;0.0;;
+y_cent_m7;ori_centrao_maioria7;56;643594;131427;20.42;0.771;0.9699
+y_cent_pp;ori_pp;55;226308;364;0.16;0.6456;0.6119
+y_cent_pp;ori_pp;56;643594;527052;81.89;0.7563;0.8847
+y_cent_pl;ori_pl;55;226308;0;0.0;;
+y_cent_pl;ori_pl;56;643594;618278;96.07;0.7583;0.8788
+y_cent_mdb;ori_mdb;55;226308;15321;6.77;0.7027;0.958
+y_cent_mdb;ori_mdb;56;643594;484169;75.23;0.7352;0.6914

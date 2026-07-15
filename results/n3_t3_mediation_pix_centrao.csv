@@ -1,0 +1,4 @@
+outcome;leg;theta_TM;beta_T_direct;gamma_M;beta_T_total;indirect_effect;prop_mediated;n_obs
+centrao;pooled;0.0065;-0.0;0.0582;0.0004;0.0004;1.0254;869902
+centrao;leg55;0.0;0.0066;0.0;0.0066;0.0;0.0;226308
+centrao;leg56;0.0057;-0.0025;0.0391;-0.0023;0.0002;-0.098;643594

@@ -1,0 +1,5 @@
+model;iv_set;coef_sd;se_sd_cluster;pp_per_unit;ci95_lo_pp;ci95_hi_pp;pval;stars;n_obs;n_clusters;n_controls;std_T;spec;leg
+PLIV_FE_cluster;backlog;2.7e-05;2.5e-05;0.0011;-0.0009;0.0032;0.267029;;226308;614;118;2.38442;base_pure;55
+PLIV_FE_cluster;backlog;3.1e-05;2.5e-05;0.0013;-0.0007;0.0033;0.203974;;226308;614;118;2.38442;base_plus_proxies;55
+PLIV_FE_cluster;backlog;-1.4e-05;7e-06;-0.0006;-0.0011;-0.0;0.039806;**;643594;597;134;2.446335;base_pure;56
+PLIV_FE_cluster;backlog;-9e-06;7e-06;-0.0004;-0.0009;0.0002;0.159184;;643594;597;136;2.446335;base_plus_proxies;56

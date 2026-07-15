@@ -1,0 +1,2 @@
+model;iv_set;coef_sd;se_sd_cluster;pp_per_unit;ci95_lo_pp;ci95_hi_pp;pval;stars;n_obs;n_clusters;n_controls;std_T;sample;y_gov_mean
+PLIV_FE_cluster;backlog;-0.10694;0.034787;-3.9942;-6.5408;-1.4476;0.002111;***;120241;598;105;2.677395;leg55_maia;0.7514

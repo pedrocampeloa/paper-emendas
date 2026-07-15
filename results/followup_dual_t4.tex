@@ -1,0 +1,29 @@
+\begin{table}[htbp]
+\centering
+\caption{\new{Polarization terciles within each legislature, dual outcome.}}
+\label{tab:t4_dual}
+\begin{threeparttable}
+\footnotesize
+\begin{tabular}{llcccccc}
+\toprule
+ & & \multicolumn{3}{c}{Government outcome} & \multicolumn{3}{c}{Centrão outcome} \\
+\cmidrule(lr){3-5} \cmidrule(lr){6-8}
+Measure & Leg & Low & Mid & High & Low & Mid & High \\
+\midrule
+MDS-Euclidean & 55 & $-3.41$ & $-0.77$ & $+1.13^{*}$ & $-3.95$ & $-0.61$ & $+0.27$ \\
+ & 56 & $-1.58^{*}$ & $+18.17$ & $+0.01$ & $-2.03^{**}$ & $+31.93$ & $+0.13$ \\
+\midrule
+MDS-Weak & 55 & $-0.01$ & $+1.87^{**}$ & $+4.32$ & $-0.09$ & $+4.22^{***}$ & $+2.81$ \\
+ & 56 & $+2.93^{***}$ & $-1.18^{***}$ & $+1.99^{***}$ & $+2.40^{***}$ & $-0.89^{**}$ & $+4.51^{***}$ \\
+\midrule
+MDS-Strong & 55 & $-0.86$ & $+2.83^{***}$ & $-2.04^{*}$ & $+3.87^{***}$ & $+2.38^{***}$ & $-1.65$ \\
+ & 56 & $+3.09^{*}$ & $+6.18^{*}$ & $-0.04$ & $+2.53$ & $+14.48^{***}$ & $+0.40^{**}$ \\
+
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\footnotesize
+\item Notes: Each cell reports the IV-DML coefficient (pp per R\$1M) on the pre-vote committed amendment, estimated by PLIV-DML with full-clean controls, deputy demeaning, and deputy-clustered standard errors. Terciles are computed within each legislature. The MDS-Euclidean measure is the structural distance in multidimensional scaling space; MDS-Weak isolates dimension-by-dimension categorical divergence; MDS-Strong captures axis-aligned divergence. The government outcome equals one when the deputy votes with the executive's directional orientation; the Centrão outcome equals one when the deputy votes with the majority position of the Centrão bloc on the same roll-call. Stars: $^{***}p<0.01$, $^{**}p<0.05$, $^{*}p<0.10$.
+\end{tablenotes}
+\end{threeparttable}
+\end{table}

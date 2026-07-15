@@ -1,0 +1,4 @@
+leg;theta_TM;beta_T_direct;gamma_M;beta_T_total;indirect_effect;prop_mediated;n_obs
+pooled;0.004;-0.0026;0.0534;-0.0023;0.0002;-0.0906;735336
+leg55;0.0;-0.0008;0.0;-0.0008;0.0;-0.0;119505
+leg56;0.0051;-0.003;0.0506;-0.0027;0.0003;-0.095;615831

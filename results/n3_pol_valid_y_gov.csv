@@ -1,0 +1,4 @@
+model;iv_set;coef_sd;se_sd_cluster;pp_per_unit;ci95_lo_pp;ci95_hi_pp;pval;stars;n_obs;n_clusters;n_controls;std_T;outcome;subperiod;tercil
+PLIV_FE_cluster;backlog;0.008772;0.016197;0.4574;-1.1981;2.113;0.588108;;96254;544;102;1.917635;y_gov;leg56_maia;low
+PLIV_FE_cluster;backlog;0.000122;0.006215;0.0062;-0.6149;0.6273;0.984331;;80086;536;91;1.961279;y_gov;leg56_maia;mid
+PLIV_FE_cluster;backlog;0.003478;0.00371;0.4332;-0.4726;1.3391;0.348574;;60605;532;98;0.802772;y_gov;leg56_maia;high

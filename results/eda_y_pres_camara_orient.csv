@@ -1,0 +1,4 @@
+presidente_partido;presidente_nome;periodo;n_obs_total;n_obs_com_outcome;pct_cobertura;mean_y_pres
+PMDB;Cunha;2015-02 a 2016-07;371490;145409;39.14;0.7867
+DEM;Maia;2016-07 a 2021-02;357186;339154;94.95;0.7565
+PP;Lira;2021-02 em diante;615854;403741;65.56;0.7617

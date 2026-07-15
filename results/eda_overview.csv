@@ -1,0 +1,7 @@
+Fonte;Arquivo;Linhas;Cobertura;Granularidade;RPs;Autores únicos;Valor total (R$ bi)
+Portal Transparência (bulk);EmendasParlamentares.csv;93714;2014-2026;emenda × autor × localidade × função;RP6, RP6_Pix, RP7, RP8, RP9;1611;332.55954916442994
+Tesouro CKAN;emendas-parlamentares.csv;388496;2015-2026;município × mês × emenda;RP-6 (com/sem Pix), RP-7;—;163.55392600496003
+SICONV emenda;siconv_emenda.csv;296701;2010-2026 (via NR_EMENDA);emenda × parlamentar × beneficiário;BANCADA, COMISSAO, INDIVIDUAL, RELATOR GERAL;1651;98.486862148
+SICONV apoiadores;apoiadores_emendas_programas.csv;291167;2010-2026;apoiador × emenda × proponente;INDIVIDUAL, COMISSAO, BANCADA, RG;2248;146330.598119481
+SICONV convênio;siconv_convenio.csv;283524;2008-2026;convênio × conveniado × programa;—;—;211.44214782
+GitHub gabinete RP-9;empenhos_*_RP9_*_PTransp+Prefeitos-TSE.csv;15726;2020-2021;empenho RP-9 × prefeito TSE 2020;RP-9 (somente FNDE + MDR);2735;—

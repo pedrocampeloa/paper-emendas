@@ -1,0 +1,10 @@
+model;iv_set;coef_sd;se_sd_cluster;pp_per_unit;ci95_lo_pp;ci95_hi_pp;pval;stars;n_obs;n_clusters;n_controls;std_T;measure;leg;tercil;n_obs_tercil;outcome
+PLIV_FE_cluster;backlog;-0.121369;0.114727;-3.9226;-11.1903;3.345;0.290103;;76036;567;99;3.09405;MDS-Euclidean;55;low;76036;centrao
+PLIV_FE_cluster;backlog;-0.001529;0.006466;-0.1262;-1.1721;0.9197;0.813076;;77208;582;92;1.211717;MDS-Euclidean;55;mid;77208;centrao
+PLIV_FE_cluster;backlog;0.000969;0.012051;0.0491;-1.1478;1.246;0.935914;;73064;571;97;1.973325;MDS-Euclidean;55;high;73064;centrao
+PLIV_FE_cluster;backlog;-0.027845;0.01427;-1.013;-2.0304;0.0045;0.051022;*;307104;585;114;2.748901;MDS-Euclidean;56;low;307104;centrao
+PLIV_FE_cluster;backlog;0.567141;0.421901;31.2706;-14.3239;76.8651;0.178868;;129364;561;102;1.813655;MDS-Euclidean;56;mid;129364;centrao
+PLIV_FE_cluster;backlog;0.002782;0.003376;0.1419;-0.1956;0.4795;0.409862;;207126;552;114;1.960033;MDS-Euclidean;56;high;207126;centrao
+PLIV_FE_cluster;backlog;0.021277;0.020376;1.5429;-1.3532;4.4391;0.2964;;83343;585;98;1.379;MDS-Weak;55;low;83343;centrao
+PLIV_FE_cluster;backlog;0.129334;0.037687;4.1817;1.7934;6.57;0.0006;***;90239;601;97;3.092851;MDS-Weak;55;mid;90239;centrao
+PLIV_FE_cluster;backlog;0.016982;0.006522;3.3634;0.8318;5.895;0.009215;***;52726;571;91;0.504916;MDS-Weak;55;high;52726;centrao
