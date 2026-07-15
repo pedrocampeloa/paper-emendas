@@ -13,7 +13,6 @@ Em ordem:
 1. **[`STATE_OF_PLAY.md`](STATE_OF_PLAY.md)** — documento mestre em português, atualizado constantemente. Mostra TODAS as bases, resultados, narrativas candidatas, dúvidas. **Esta é a fonte principal de verdade.**
 2. **[`MUSTDO_v2.md`](MUSTDO_v2.md)** — feedback consolidado pós-defesa, itens de ação organizados por prioridade.
 3. **[`METHODOLOGY_LOG.md`](METHODOLOGY_LOG.md)** — log vivo de tudo que foi rodado.
-4. **[../CLAUDE.md](../CLAUDE.md)** — convenções gerais do monorepo.
 
 Documentos arquivados em `_archive/` (pré-defesa, não usar mais):
 - `MUSTDO_pre_defesa.md` (anterior `MUSTDO.md`)

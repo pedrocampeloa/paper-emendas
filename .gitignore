@@ -82,3 +82,11 @@ docs/paper.pdf
 
 # Zenodo upload artifacts (upload to Zenodo, not to git)
 zenodo_upload/
+
+# AI assistant metadata (should never enter this repo)
+.claude/
+.cursor/
+.aider*
+CLAUDE.md
+CLAUDE.local.md
+.copilot-instructions.md

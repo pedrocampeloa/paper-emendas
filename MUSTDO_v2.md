@@ -253,7 +253,7 @@ Cada item tem: **Prioridade** (P1 crítico / P2 importante / P3 nice-to-have) + 
 
 - **D.1** — *"Vocês podem testar causalidade reversa?"* → **resposta**: IV-DML controla isso por construção (a residual T̃ é T menos m(X)); referência a `01_*` (placebo voto livre = nulo) e à exclusão restriction.
 - **D.2** — *"O experimento natural do STF (ADPF 850) — vocês exploram?"* → **resposta**: sim, event study mensal está em `31_event_study_stf.py` + `event_study_stf_monthly.csv`. Está no Apêndice A. **Considerar**: mover para corpo principal? Decisão narrativa.
-- **D.3** — *"Por que excluir leg 57?"* → **resposta**: emendas têm lag estrutural no Portal da Transparência (último ano completo = 2024). Citação ao CLAUDE.md `data_cutoffs.md`.
+- **D.3** — *"Por que excluir leg 57?"* → **resposta**: emendas têm lag estrutural no Portal da Transparência (último ano completo = 2024).
 - **D.4** — *"Os achados servem como uma 'tipologia' de regimes pork-barrel?"* → **resposta**: sim, dedicar parágrafo na introdução nomeando: **Regime A (clássico cooptativo, Temer 2016-2018)** vs **Regime B (negociado-fragmentado, Bolsonaro-Lira 2021-2022)**.
 
 ---
