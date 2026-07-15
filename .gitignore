@@ -90,3 +90,6 @@ zenodo_upload/
 CLAUDE.md
 CLAUDE.local.md
 .copilot-instructions.md
+
+# Distribution artifact (not tracked)
+paper_package.zip
