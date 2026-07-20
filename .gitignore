@@ -93,3 +93,7 @@ CLAUDE.local.md
 
 # Distribution artifact (not tracked)
 paper_package.zip
+
+# Reviewer coordination docs (internal — not public)
+REPORT_*.md
+paper_comments_*.zip
